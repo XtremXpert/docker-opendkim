@@ -4,8 +4,8 @@ MAINTAINER Benoît "XtremXpert" Vézina  <xtremxpert@xtremxpert.com>
 
 ENV DEBIAN_FRONTEND=noninteractive
 
-RUN apt-get update -qq \
-&& apt-get install --no-install-recommends -qq -y opendkim opendkim-tools psmisc
+RUN apt-get update \
+&& apt-get install --no-install-recommends -y opendkim opendkim-tools 
 
 COPY rootfs /
 
