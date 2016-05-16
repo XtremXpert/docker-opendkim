@@ -1,12 +1,12 @@
 #!/bin/sh
 
-if [ -z "$DOMAIN" ]; then
-    echo "DOMAIN environment variable is required"
+if [ -z "$MAIL_DOMAIN" ]; then
+    echo "MAIL_DOMAIN environment variable is required"
     exit 1
 fi
 
-if [ -z "$SELECTOR" ]; then
-    echo "DOMAIN environment variable is required"
+if [ -z "$MAIL_DKIM_SELECTOR" ]; then
+    echo "MAIL_DKIM_SELECTOR environment variable is required"
     exit 1
 fi
 
