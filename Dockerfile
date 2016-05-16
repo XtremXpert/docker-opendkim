@@ -1,16 +1,15 @@
-FROM ubuntu
-MAINTAINER Michael Johnson <michael@johnson.computer>
+FROM debian:latest
 
-RUN DEBIAN_FRONTEND=noninteractive apt-get update -qq
-RUN DEBIAN_FRONTEND=noninteractive apt-get install --no-install-recommends -qq -y opendkim opendkim-tools psmisc
+MAINTAINER Benoît "XtremXpert" Vézina  <xtremxpert@xtremxpert.com>
 
-COPY confd/confd /opt/confd
+ENV DEBIAN_FRONTEND=noninteractive
+
+RUN apt-get update -qq \
+&& apt-get install --no-install-recommends -qq -y opendkim opendkim-tools psmisc
+
+COPY rootfs /
+
 RUN chmod a+x /opt/confd
-
-COPY confd/dkim.key.toml /opt/confd-dkim/conf.d/
-COPY confd/dkim.key.tmpl /opt/confd-dkim/templates/
-
-COPY start.sh /opt/start.sh
 RUN chmod a+x /opt/start.sh
 
 EXPOSE 12301
