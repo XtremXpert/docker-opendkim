@@ -30,4 +30,4 @@ sed -i -e "s#/var/log/mail.log#/var/log/syslog#g" /etc/syslog-ng/syslog-ng.conf
 # Have to copy cert to non-volume mounted folder or it causes permissions errors
 cp /etc/certs/dkim.private /etc/ssl/certs/dkim.private
 
-exec /usr/sbin/opendkim -f
+exec opendkim -f -x /etc/opendkim.conf -p inet:12301@0.0.0.0
